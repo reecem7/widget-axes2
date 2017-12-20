@@ -1,18 +1,18 @@
 /* global cprequire_test macro chilipeppr THREE $ requirejs cprequire cpdefine chilipeppr */
 // Test this element. This code is auto-removed by the chilipeppr.load()
-cprequire_test(["inline:com-chilipeppr-widget-xyz"], function (xyz) {
+cprequire_test(["inline:com-chilipeppr-widget-axes2"], function (xyz) {
     console.log("test running of " + xyz.id);
     //sp.init("192.168.1.7");
     //xyz.initAs3dPrinting();
     xyz.init();
-    xyz.showBody("com-chilipeppr-widget-xyz");
+    xyz.showBody("com-chilipeppr-widget-axes2");
     xyz.currentUnits = 'mm'
 
     // load the WCS widget to left
     //$('body').css('margin-left', '80px');
     var wrapDiv = $('<div class="testdiv" style="margin-left:80px;position:relative;">');
 
-    $('#com-chilipeppr-widget-xyz').wrap(wrapDiv);
+    $('#com-chilipeppr-widget-axes2').wrap(wrapDiv);
 
     // test out planner resume/pause
     var testPauseResume = function () {
@@ -134,7 +134,7 @@ cprequire_test(["inline:com-chilipeppr-widget-xyz"], function (xyz) {
     setTimeout(function() {
         
         console.log("setting up alternate keystrokes");
-        $('#com-chilipeppr-widget-xyz-ftr').keydown(function(evt) {
+        $('#com-chilipeppr-widget-axes2-ftr').keydown(function(evt) {
             var e = $.Event('keydown');
             
             if (evt.which == 50) {
@@ -151,7 +151,7 @@ cprequire_test(["inline:com-chilipeppr-widget-xyz"], function (xyz) {
             if (e.which > 0) {
                 evt.preventDefault();
                 // fire off fake event as if key was pressed down
-                $('#com-chilipeppr-widget-xyz-ftr').trigger(e);
+                $('#com-chilipeppr-widget-axes2-ftr').trigger(e);
                 return false;
             }
         });
@@ -162,9 +162,9 @@ cprequire_test(["inline:com-chilipeppr-widget-xyz"], function (xyz) {
 
 } /*end_test*/ );
 
-cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"], function () {
+cpdefine("inline:com-chilipeppr-widget-axes2", ["chilipeppr_ready", "jquerycookie"], function () {
     return {
-        id: "com-chilipeppr-widget-xyz",
+        id: "com-chilipeppr-widget-axes2",
         url: "(auto fill by runme.js)",       // The final URL of the working widget as a single HTML file with CSS and Javascript inlined. You can let runme.js auto fill this if you are using Cloud9.
         fiddleurl: "(auto fill by runme.js)", // The edit URL. This can be auto-filled by runme.js in Cloud9 if you'd like, or just define it on your own to help people know where they can edit/fork your widget
         githuburl: "(auto fill by runme.js)", // The backing github repo
@@ -252,12 +252,12 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
         },
         pencilSetup: function() {
             // add mouseover events to DRO numbers
-            //$('#com-chilipeppr-widget-xyz-x').mouseover(this.pencilOnMouseover.bind(this));
-            //$('#com-chilipeppr-widget-xyz-x').mouseout(this.pencilOnMouseout.bind(this));
-            $('#com-chilipeppr-widget-xyz-x').hover(this.pencilOnMouseover.bind(this), this.pencilOnMouseout.bind(this));
-            $('#com-chilipeppr-widget-xyz-y').hover(this.pencilOnMouseover.bind(this), this.pencilOnMouseout.bind(this));
-            $('#com-chilipeppr-widget-xyz-z').hover(this.pencilOnMouseover.bind(this), this.pencilOnMouseout.bind(this));
-            $('#com-chilipeppr-widget-xyz-a').hover(this.pencilOnMouseover.bind(this), this.pencilOnMouseout.bind(this));
+            //$('#com-chilipeppr-widget-axes2-x').mouseover(this.pencilOnMouseover.bind(this));
+            //$('#com-chilipeppr-widget-axes2-x').mouseout(this.pencilOnMouseout.bind(this));
+            $('#com-chilipeppr-widget-axes2-x').hover(this.pencilOnMouseover.bind(this), this.pencilOnMouseout.bind(this));
+            $('#com-chilipeppr-widget-axes2-y').hover(this.pencilOnMouseover.bind(this), this.pencilOnMouseout.bind(this));
+            $('#com-chilipeppr-widget-axes2-z').hover(this.pencilOnMouseover.bind(this), this.pencilOnMouseout.bind(this));
+            $('#com-chilipeppr-widget-axes2-a').hover(this.pencilOnMouseover.bind(this), this.pencilOnMouseout.bind(this));
         },
         pencilOnMouseover: function(evt) {
             console.log("got pencilOnMouseover. evt:", evt);
@@ -336,19 +336,19 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
         },
         initAs3dPrinting: function () {
             // by default we'll show the A/B/C axes
-            $('#com-chilipeppr-widget-xyz-a').removeClass("hidden");
-            $('#com-chilipeppr-widget-xyz-b').removeClass("hidden");
+            $('#com-chilipeppr-widget-axes2-a').removeClass("hidden");
+            $('#com-chilipeppr-widget-axes2-b').removeClass("hidden");
             // change labels
-            $('#com-chilipeppr-widget-xyz-a .com-chilipeppr-xyz-label').text("E0");
-            $('#com-chilipeppr-widget-xyz-b .com-chilipeppr-xyz-label').text("E1");
+            $('#com-chilipeppr-widget-axes2-a .com-chilipeppr-xyz-label').text("E0");
+            $('#com-chilipeppr-widget-axes2-b .com-chilipeppr-xyz-label').text("E1");
             // change units
-            $('#com-chilipeppr-widget-xyz-a .com-chilipeppr-xyz-dim').text("mm");
-            $('#com-chilipeppr-widget-xyz-b .com-chilipeppr-xyz-dim').text("mm");
+            $('#com-chilipeppr-widget-axes2-a .com-chilipeppr-xyz-dim').text("mm");
+            $('#com-chilipeppr-widget-axes2-b .com-chilipeppr-xyz-dim').text("mm");
 
         },
         setupShowHideWcsBtn: function () {
 
-            var btnEl = $("#com-chilipeppr-widget-xyz .btnToggleShowWcs");
+            var btnEl = $("#com-chilipeppr-widget-axes2 .btnToggleShowWcs");
             btnEl.click(this.toggleWcs.bind(this));
             btnEl.popover();
             chilipeppr.load(
@@ -363,28 +363,28 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
             });
         },
         toggleWcs: function (evt) {
-            $("#com-chilipeppr-widget-xyz .btnToggleShowWcs").popover('hide');
+            $("#com-chilipeppr-widget-axes2 .btnToggleShowWcs").popover('hide');
             var wcsEl = $('#com-chilipeppr-widgetholder-wcs');
             if (wcsEl.hasClass("hidden")) {
                 wcsEl.removeClass("hidden");
-                $('#com-chilipeppr-widget-xyz .btnToggleShowWcs').addClass("active");
+                $('#com-chilipeppr-widget-axes2 .btnToggleShowWcs').addClass("active");
             } else {
                 wcsEl.addClass("hidden");
-                $('#com-chilipeppr-widget-xyz .btnToggleShowWcs').removeClass("active");
+                $('#com-chilipeppr-widget-axes2 .btnToggleShowWcs').removeClass("active");
 
             }
         },
         setupShowHideTouchBtn: function () {
-            $("#com-chilipeppr-widget-xyz .btnToggleShowTouchJog").popover();
+            $("#com-chilipeppr-widget-axes2 .btnToggleShowTouchJog").popover();
             //$( window ).resize(this.showHideTouchBtn.bind(this));
             this.showHideTouchBtn();
             $(window).resize(this.showHideTouchBtn.bind(this));
         },
         showHideTouchBtn: function () {
             //console.log("should we show or hide the touch btn");
-            var btnEl = $("#com-chilipeppr-widget-xyz .btnShowTouchJog");
+            var btnEl = $("#com-chilipeppr-widget-axes2 .btnShowTouchJog");
             var btnParentWidth = btnEl.parent().parent().width();
-            var widgetWidth = $("#com-chilipeppr-widget-xyz").width();
+            var widgetWidth = $("#com-chilipeppr-widget-axes2").width();
             console.log("btnParentWidth:", btnParentWidth, "widgetWidth:", widgetWidth);
             //console.log("btnEl:", btnEl, "parent:", btnEl.parent(), "btnEl.parent().width()", btnEl.parent().width(), "btnEl.parent().parent().width()", btnEl.parent().parent().width());
             //console.log("btnEl.parent().parent().width()", btnEl.parent().parent().width(), "btnEl.parent().parent().width()", btnEl.parent().parent().parent().parent().width());
@@ -404,8 +404,8 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
         el: null,
         ctx: null,
         setupTouchArea: function () {
-            this.canvas = $('#com-chilipeppr-widget-xyz .touchpad-overlay canvas');
-            var tpad = $('#com-chilipeppr-widget-xyz .touchpad-overlay');
+            this.canvas = $('#com-chilipeppr-widget-axes2 .touchpad-overlay canvas');
+            var tpad = $('#com-chilipeppr-widget-axes2 .touchpad-overlay');
 
             console.log("tpad:", tpad);
 
@@ -417,9 +417,9 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
                     height: tpad.height()
                 });
                 */
-            this.el = $('#com-chilipeppr-widget-xyz .touchpad-overlay canvas')[0];
+            this.el = $('#com-chilipeppr-widget-axes2 .touchpad-overlay canvas')[0];
             this.canvasResize();
-            //this.ctx = $('#com-chilipeppr-widget-xyz .touchpad-overlay canvas')[0].getContext("2d");
+            //this.ctx = $('#com-chilipeppr-widget-axes2 .touchpad-overlay canvas')[0].getContext("2d");
             var that = this;
 
             tpad.bind("touchstart", function (e) {
@@ -443,7 +443,7 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
             */
 
             // setup toggle buttons
-            $('#com-chilipeppr-widget-xyz .btnToggleShowTouchJog').click(this.toggleTouchJog.bind(this));
+            $('#com-chilipeppr-widget-axes2 .btnToggleShowTouchJog').click(this.toggleTouchJog.bind(this));
 
             $(window).resize(this.canvasResize.bind(this));
             //this.toggleTouchJog();
@@ -459,21 +459,21 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
             this.log("touch area setup");
         },
         toggleTouchJog: function () {
-            $('#com-chilipeppr-widget-xyz .btnToggleShowTouchJog').popover('hide');
-            var tpad = $('#com-chilipeppr-widget-xyz .touchpad-overlay');
+            $('#com-chilipeppr-widget-axes2 .btnToggleShowTouchJog').popover('hide');
+            var tpad = $('#com-chilipeppr-widget-axes2 .touchpad-overlay');
             if (tpad.hasClass("hidden")) {
                 tpad.removeClass("hidden");
                 this.canvasResize();
-                $('#com-chilipeppr-widget-xyz .btnToggleShowTouchJog').addClass("active");
+                $('#com-chilipeppr-widget-axes2 .btnToggleShowTouchJog').addClass("active");
             } else {
                 tpad.addClass("hidden");
-                $('#com-chilipeppr-widget-xyz .btnToggleShowTouchJog').removeClass("active");
+                $('#com-chilipeppr-widget-axes2 .btnToggleShowTouchJog').removeClass("active");
 
             }
         },
         canvasResize: function () {
             console.log("touchpad resizing");
-            var tpad = $('#com-chilipeppr-widget-xyz .touchpad-overlay');
+            var tpad = $('#com-chilipeppr-widget-axes2 .touchpad-overlay');
 
             this.canvas.width(tpad.width());
             this.canvas.height(tpad.height());
@@ -481,8 +481,8 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
                 width: tpad.width(),
                 height: tpad.height()
             });
-            //this.el = $('#com-chilipeppr-widget-xyz .touchpad-overlay canvas')[0];
-            this.ctx = $('#com-chilipeppr-widget-xyz .touchpad-overlay canvas')[0].getContext("2d");
+            //this.el = $('#com-chilipeppr-widget-axes2 .touchpad-overlay canvas')[0];
+            this.ctx = $('#com-chilipeppr-widget-axes2 .touchpad-overlay canvas')[0].getContext("2d");
             this.drawText();
         },
         drawText: function () {
@@ -955,29 +955,29 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
             if (config == "small") this.bodyShowSmall();
 
             var that = this;
-            $('#com-chilipeppr-widget-xyz .view-small').click(function () {
+            $('#com-chilipeppr-widget-axes2 .view-small').click(function () {
                 that.bodyShowSmall();
                 localStorage.setItem("/" + that.id + "/size", "small");
             });
-            $('#com-chilipeppr-widget-xyz .view-large').click(function () {
+            $('#com-chilipeppr-widget-axes2 .view-large').click(function () {
                 that.bodyShowNormal();
                 localStorage.setItem("/" + that.id + "/size", "normal");
             });
         },
         bodyShowSmall: function () {
-            $('#com-chilipeppr-widget-xyz').addClass("size-small");
-            $('#com-chilipeppr-widget-xyz .view-small').addClass("active");
-            $('#com-chilipeppr-widget-xyz .view-large').removeClass("active");
+            $('#com-chilipeppr-widget-axes2').addClass("size-small");
+            $('#com-chilipeppr-widget-axes2 .view-small').addClass("active");
+            $('#com-chilipeppr-widget-axes2 .view-large').removeClass("active");
         },
         bodyShowNormal: function () {
-            $('#com-chilipeppr-widget-xyz').removeClass("size-small");
-            $('#com-chilipeppr-widget-xyz .view-small').removeClass("active");
-            $('#com-chilipeppr-widget-xyz .view-large').addClass("active");
+            $('#com-chilipeppr-widget-axes2').removeClass("size-small");
+            $('#com-chilipeppr-widget-axes2 .view-small').removeClass("active");
+            $('#com-chilipeppr-widget-axes2 .view-large').addClass("active");
         },
         options: null,
         setupUiFromCookie: function () {
             // read vals from cookies
-            var options = $.cookie('com-chilipeppr-widget-xyz-options');
+            var options = $.cookie('com-chilipeppr-widget-axes2-options');
 
             if (true && options) {
                 options = $.parseJSON(options);
@@ -1012,7 +1012,7 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
             var optionsStr = JSON.stringify(options);
             console.log("saving options:", options, "json.stringify:", optionsStr);
             // store cookie
-            $.cookie('com-chilipeppr-widget-xyz-options', optionsStr, {
+            $.cookie('com-chilipeppr-widget-axes2-options', optionsStr, {
                 expires: 365 * 10,
                 path: '/'
             });
@@ -1021,7 +1021,7 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
         isPausedByPlanner: false, // keeps track of whether we've been told to pause sending by the planner buffer
         onPlannerPause: function () {
             console.log("xyz-onPlannerPause. being asked to pause.");
-            if (this.pauseBtnIcon === null) this.pauseBtnIcon = $('#com-chilipeppr-widget-xyz div.plannerpause');
+            if (this.pauseBtnIcon === null) this.pauseBtnIcon = $('#com-chilipeppr-widget-axes2 div.plannerpause');
 
             if (!this.isPausedByPlanner) {
                 // we are not paused, so go ahead and pause
@@ -1035,7 +1035,7 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
         },
         onPlannerResume: function () {
             console.log("xyz-onPlannerResume. being asked to resume.");
-            if (this.pauseBtnIcon === null) this.pauseBtnIcon = $('#com-chilipeppr-widget-xyz div.plannerpause');
+            if (this.pauseBtnIcon === null) this.pauseBtnIcon = $('#com-chilipeppr-widget-axes2 div.plannerpause');
 
             if (this.isPausedByPlanner) {
                 // we are currently paused, so unpause 
@@ -1099,7 +1099,7 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
         onCoordsUpdate: function (coords) {
             console.log("onCoordsUpdate. coords:", coords);
             if (coords.coordNum != this.lastCoords.coordNum) {
-                $('.com-chilipeppr-widget-xyz-coords').text(coords.coord);
+                $('.com-chilipeppr-widget-axes2-coords').text(coords.coord);
                 this.lastCoords = coords;
             }
         },
@@ -1116,52 +1116,52 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
         axisma: null,
         setupAxes: function () {
             this.axisx = {
-                intblack: $('#com-chilipeppr-widget-xyz-x .xyz-intblack'),
-                intgray: $('#com-chilipeppr-widget-xyz-x .xyz-intgray'),
-                negpos: $('#com-chilipeppr-widget-xyz-x .xyz-negpos'),
-                decimal: $('#com-chilipeppr-widget-xyz-x .xyz-decimal')
+                intblack: $('#com-chilipeppr-widget-axes2-x .xyz-intblack'),
+                intgray: $('#com-chilipeppr-widget-axes2-x .xyz-intgray'),
+                negpos: $('#com-chilipeppr-widget-axes2-x .xyz-negpos'),
+                decimal: $('#com-chilipeppr-widget-axes2-x .xyz-decimal')
             };
             this.axisy = {
-                intblack: $('#com-chilipeppr-widget-xyz-y .xyz-intblack'),
-                intgray: $('#com-chilipeppr-widget-xyz-y .xyz-intgray'),
-                negpos: $('#com-chilipeppr-widget-xyz-y .xyz-negpos'),
-                decimal: $('#com-chilipeppr-widget-xyz-y .xyz-decimal')
+                intblack: $('#com-chilipeppr-widget-axes2-y .xyz-intblack'),
+                intgray: $('#com-chilipeppr-widget-axes2-y .xyz-intgray'),
+                negpos: $('#com-chilipeppr-widget-axes2-y .xyz-negpos'),
+                decimal: $('#com-chilipeppr-widget-axes2-y .xyz-decimal')
             };
             this.axisz = {
-                intblack: $('#com-chilipeppr-widget-xyz-z .xyz-intblack'),
-                intgray: $('#com-chilipeppr-widget-xyz-z .xyz-intgray'),
-                negpos: $('#com-chilipeppr-widget-xyz-z .xyz-negpos'),
-                decimal: $('#com-chilipeppr-widget-xyz-z .xyz-decimal')
+                intblack: $('#com-chilipeppr-widget-axes2-z .xyz-intblack'),
+                intgray: $('#com-chilipeppr-widget-axes2-z .xyz-intgray'),
+                negpos: $('#com-chilipeppr-widget-axes2-z .xyz-negpos'),
+                decimal: $('#com-chilipeppr-widget-axes2-z .xyz-decimal')
             };
             this.axisa = {
-                intblack: $('#com-chilipeppr-widget-xyz-a .xyz-intblack'),
-                intgray: $('#com-chilipeppr-widget-xyz-a .xyz-intgray'),
-                negpos: $('#com-chilipeppr-widget-xyz-a .xyz-negpos'),
-                decimal: $('#com-chilipeppr-widget-xyz-a .xyz-decimal')
+                intblack: $('#com-chilipeppr-widget-axes2-a .xyz-intblack'),
+                intgray: $('#com-chilipeppr-widget-axes2-a .xyz-intgray'),
+                negpos: $('#com-chilipeppr-widget-axes2-a .xyz-negpos'),
+                decimal: $('#com-chilipeppr-widget-axes2-a .xyz-decimal')
             };
             this.axismx = {
-                intblack: $('#com-chilipeppr-widget-xyz-mx .xyz-intblack'),
-                intgray: $('#com-chilipeppr-widget-xyz-mx .xyz-intgray'),
-                negpos: $('#com-chilipeppr-widget-xyz-mx .xyz-negpos'),
-                decimal: $('#com-chilipeppr-widget-xyz-mx .xyz-decimal')
+                intblack: $('#com-chilipeppr-widget-axes2-mx .xyz-intblack'),
+                intgray: $('#com-chilipeppr-widget-axes2-mx .xyz-intgray'),
+                negpos: $('#com-chilipeppr-widget-axes2-mx .xyz-negpos'),
+                decimal: $('#com-chilipeppr-widget-axes2-mx .xyz-decimal')
             };
             this.axismy = {
-                intblack: $('#com-chilipeppr-widget-xyz-my .xyz-intblack'),
-                intgray: $('#com-chilipeppr-widget-xyz-my .xyz-intgray'),
-                negpos: $('#com-chilipeppr-widget-xyz-my .xyz-negpos'),
-                decimal: $('#com-chilipeppr-widget-xyz-my .xyz-decimal')
+                intblack: $('#com-chilipeppr-widget-axes2-my .xyz-intblack'),
+                intgray: $('#com-chilipeppr-widget-axes2-my .xyz-intgray'),
+                negpos: $('#com-chilipeppr-widget-axes2-my .xyz-negpos'),
+                decimal: $('#com-chilipeppr-widget-axes2-my .xyz-decimal')
             };
             this.axismz = {
-                intblack: $('#com-chilipeppr-widget-xyz-mz .xyz-intblack'),
-                intgray: $('#com-chilipeppr-widget-xyz-mz .xyz-intgray'),
-                negpos: $('#com-chilipeppr-widget-xyz-mz .xyz-negpos'),
-                decimal: $('#com-chilipeppr-widget-xyz-mz .xyz-decimal')
+                intblack: $('#com-chilipeppr-widget-axes2-mz .xyz-intblack'),
+                intgray: $('#com-chilipeppr-widget-axes2-mz .xyz-intgray'),
+                negpos: $('#com-chilipeppr-widget-axes2-mz .xyz-negpos'),
+                decimal: $('#com-chilipeppr-widget-axes2-mz .xyz-decimal')
             };
             this.axisma = {
-                intblack: $('#com-chilipeppr-widget-xyz-ma .xyz-intblack'),
-                intgray: $('#com-chilipeppr-widget-xyz-ma .xyz-intgray'),
-                negpos: $('#com-chilipeppr-widget-xyz-ma .xyz-negpos'),
-                decimal: $('#com-chilipeppr-widget-xyz-ma .xyz-decimal')
+                intblack: $('#com-chilipeppr-widget-axes2-ma .xyz-intblack'),
+                intgray: $('#com-chilipeppr-widget-axes2-ma .xyz-intgray'),
+                negpos: $('#com-chilipeppr-widget-axes2-ma .xyz-negpos'),
+                decimal: $('#com-chilipeppr-widget-axes2-ma .xyz-decimal')
             };
             this.axes = {
                 x: this.axisx,
@@ -1269,51 +1269,51 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
             this.lastVal[axis] = val;
         },
         menuSetup: function () {
-            $('#com-chilipeppr-widget-xyz .xyz-showa').click(this.showHideAxisA.bind(this));
-            $('#com-chilipeppr-widget-xyz .showhideaaxis').click(this.showHideAxisA.bind(this));
-            $('#com-chilipeppr-widget-xyz .showhidemDRO').click(this.showHidemDRO.bind(this));
+            $('#com-chilipeppr-widget-axes2 .xyz-showa').click(this.showHideAxisA.bind(this));
+            $('#com-chilipeppr-widget-axes2 .showhideaaxis').click(this.showHideAxisA.bind(this));
+            $('#com-chilipeppr-widget-axes2 .showhidemDRO').click(this.showHidemDRO.bind(this));
 
             // Setup zeroing G92 - per axis menu
-            $('#com-chilipeppr-widget-xyz-x .dropdown-menu a').eq(0).click("x", this.zeroOutAxisG92.bind(this)).prop('href', 'javascript:');
-            $('#com-chilipeppr-widget-xyz-y .dropdown-menu a').eq(0).click("y", this.zeroOutAxisG92.bind(this)).prop('href', 'javascript:');;
-            $('#com-chilipeppr-widget-xyz-z .dropdown-menu a').eq(0).click("z", this.zeroOutAxisG92.bind(this)).prop('href', 'javascript:');;
-            $('#com-chilipeppr-widget-xyz-a .dropdown-menu a').eq(0).click("a", this.zeroOutAxisG92.bind(this)).prop('href', 'javascript:');;
+            $('#com-chilipeppr-widget-axes2-x .dropdown-menu a').eq(0).click("x", this.zeroOutAxisG92.bind(this)).prop('href', 'javascript:');
+            $('#com-chilipeppr-widget-axes2-y .dropdown-menu a').eq(0).click("y", this.zeroOutAxisG92.bind(this)).prop('href', 'javascript:');;
+            $('#com-chilipeppr-widget-axes2-z .dropdown-menu a').eq(0).click("z", this.zeroOutAxisG92.bind(this)).prop('href', 'javascript:');;
+            $('#com-chilipeppr-widget-axes2-a .dropdown-menu a').eq(0).click("a", this.zeroOutAxisG92.bind(this)).prop('href', 'javascript:');;
 
             // Setup unzeroing G92 - per axis menu
-            $('#com-chilipeppr-widget-xyz-x .dropdown-menu a').eq(1).click("x", this.unzeroOutAxisG92.bind(this)).prop('href', 'javascript:');
-            $('#com-chilipeppr-widget-xyz-y .dropdown-menu a').eq(1).click("y", this.unzeroOutAxisG92.bind(this)).prop('href', 'javascript:');;
-            $('#com-chilipeppr-widget-xyz-z .dropdown-menu a').eq(1).click("z", this.unzeroOutAxisG92.bind(this)).prop('href', 'javascript:');;
-            $('#com-chilipeppr-widget-xyz-a .dropdown-menu a').eq(1).click("a", this.unzeroOutAxisG92.bind(this)).prop('href', 'javascript:');;
+            $('#com-chilipeppr-widget-axes2-x .dropdown-menu a').eq(1).click("x", this.unzeroOutAxisG92.bind(this)).prop('href', 'javascript:');
+            $('#com-chilipeppr-widget-axes2-y .dropdown-menu a').eq(1).click("y", this.unzeroOutAxisG92.bind(this)).prop('href', 'javascript:');;
+            $('#com-chilipeppr-widget-axes2-z .dropdown-menu a').eq(1).click("z", this.unzeroOutAxisG92.bind(this)).prop('href', 'javascript:');;
+            $('#com-chilipeppr-widget-axes2-a .dropdown-menu a').eq(1).click("a", this.unzeroOutAxisG92.bind(this)).prop('href', 'javascript:');;
 
             // Setup goto Work zero - per axis menu
-            $('#com-chilipeppr-widget-xyz-x .dropdown-menu a').eq(2).click("x", this.gotoZero.bind(this)).prop('href', 'javascript:');
-            $('#com-chilipeppr-widget-xyz-y .dropdown-menu a').eq(2).click("y", this.gotoZero.bind(this)).prop('href', 'javascript:');
-            $('#com-chilipeppr-widget-xyz-z .dropdown-menu a').eq(2).click("z", this.gotoZero.bind(this)).prop('href', 'javascript:');
-            $('#com-chilipeppr-widget-xyz-a .dropdown-menu a').eq(2).click("a", this.gotoZero.bind(this)).prop('href', 'javascript:');
+            $('#com-chilipeppr-widget-axes2-x .dropdown-menu a').eq(2).click("x", this.gotoZero.bind(this)).prop('href', 'javascript:');
+            $('#com-chilipeppr-widget-axes2-y .dropdown-menu a').eq(2).click("y", this.gotoZero.bind(this)).prop('href', 'javascript:');
+            $('#com-chilipeppr-widget-axes2-z .dropdown-menu a').eq(2).click("z", this.gotoZero.bind(this)).prop('href', 'javascript:');
+            $('#com-chilipeppr-widget-axes2-a .dropdown-menu a').eq(2).click("a", this.gotoZero.bind(this)).prop('href', 'javascript:');
 
             // Setup zeroing G10 (work) - per axis menu
-            $('#com-chilipeppr-widget-xyz-x .dropdown-menu a').eq(3).click("mx", this.zeroOutAxisG10.bind(this)).prop('href', 'javascript:');
-            $('#com-chilipeppr-widget-xyz-y .dropdown-menu a').eq(3).click("my", this.zeroOutAxisG10.bind(this)).prop('href', 'javascript:');;
-            $('#com-chilipeppr-widget-xyz-z .dropdown-menu a').eq(3).click("mz", this.zeroOutAxisG10.bind(this)).prop('href', 'javascript:');;
-            $('#com-chilipeppr-widget-xyz-a .dropdown-menu a').eq(3).click("ma", this.zeroOutAxisG10.bind(this)).prop('href', 'javascript:');;
+            $('#com-chilipeppr-widget-axes2-x .dropdown-menu a').eq(3).click("mx", this.zeroOutAxisG10.bind(this)).prop('href', 'javascript:');
+            $('#com-chilipeppr-widget-axes2-y .dropdown-menu a').eq(3).click("my", this.zeroOutAxisG10.bind(this)).prop('href', 'javascript:');;
+            $('#com-chilipeppr-widget-axes2-z .dropdown-menu a').eq(3).click("mz", this.zeroOutAxisG10.bind(this)).prop('href', 'javascript:');;
+            $('#com-chilipeppr-widget-axes2-a .dropdown-menu a').eq(3).click("ma", this.zeroOutAxisG10.bind(this)).prop('href', 'javascript:');;
 
             // Setup goto Machine zero - per axis menu
-            $('#com-chilipeppr-widget-xyz-x .dropdown-menu a').eq(4).click("x", this.gotoZeroM.bind(this)).prop('href', 'javascript:');
-            $('#com-chilipeppr-widget-xyz-y .dropdown-menu a').eq(4).click("y", this.gotoZeroM.bind(this)).prop('href', 'javascript:');
-            $('#com-chilipeppr-widget-xyz-z .dropdown-menu a').eq(4).click("z", this.gotoZeroM.bind(this)).prop('href', 'javascript:');
-            $('#com-chilipeppr-widget-xyz-a .dropdown-menu a').eq(4).click("a", this.gotoZeroM.bind(this)).prop('href', 'javascript:');
+            $('#com-chilipeppr-widget-axes2-x .dropdown-menu a').eq(4).click("x", this.gotoZeroM.bind(this)).prop('href', 'javascript:');
+            $('#com-chilipeppr-widget-axes2-y .dropdown-menu a').eq(4).click("y", this.gotoZeroM.bind(this)).prop('href', 'javascript:');
+            $('#com-chilipeppr-widget-axes2-z .dropdown-menu a').eq(4).click("z", this.gotoZeroM.bind(this)).prop('href', 'javascript:');
+            $('#com-chilipeppr-widget-axes2-a .dropdown-menu a').eq(4).click("a", this.gotoZeroM.bind(this)).prop('href', 'javascript:');
 
             // Setup homing with no limit switches - per axis menu
-            $('#com-chilipeppr-widget-xyz-x .dropdown-menu a').eq(5).click("x", this.zeroOutAxisG28.bind(this)).prop('href', 'javascript:');
-            $('#com-chilipeppr-widget-xyz-y .dropdown-menu a').eq(5).click("y", this.zeroOutAxisG28.bind(this)).prop('href', 'javascript:');;
-            $('#com-chilipeppr-widget-xyz-z .dropdown-menu a').eq(5).click("z", this.zeroOutAxisG28.bind(this)).prop('href', 'javascript:');;
-            $('#com-chilipeppr-widget-xyz-a .dropdown-menu a').eq(5).click("a", this.zeroOutAxisG28.bind(this)).prop('href', 'javascript:');;
+            $('#com-chilipeppr-widget-axes2-x .dropdown-menu a').eq(5).click("x", this.zeroOutAxisG28.bind(this)).prop('href', 'javascript:');
+            $('#com-chilipeppr-widget-axes2-y .dropdown-menu a').eq(5).click("y", this.zeroOutAxisG28.bind(this)).prop('href', 'javascript:');;
+            $('#com-chilipeppr-widget-axes2-z .dropdown-menu a').eq(5).click("z", this.zeroOutAxisG28.bind(this)).prop('href', 'javascript:');;
+            $('#com-chilipeppr-widget-axes2-a .dropdown-menu a').eq(5).click("a", this.zeroOutAxisG28.bind(this)).prop('href', 'javascript:');;
 
             // Setup homing with limit switches - per axis menu
-            $('#com-chilipeppr-widget-xyz-x .dropdown-menu a').eq(6).click("x", this.homeAxis.bind(this)).prop('href', 'javascript:');
-            $('#com-chilipeppr-widget-xyz-y .dropdown-menu a').eq(6).click("y", this.homeAxis.bind(this)).prop('href', 'javascript:');;
-            $('#com-chilipeppr-widget-xyz-z .dropdown-menu a').eq(6).click("z", this.homeAxis.bind(this)).prop('href', 'javascript:');;
-            $('#com-chilipeppr-widget-xyz-a .dropdown-menu a').eq(6).click("a", this.homeAxis.bind(this)).prop('href', 'javascript:');;
+            $('#com-chilipeppr-widget-axes2-x .dropdown-menu a').eq(6).click("x", this.homeAxis.bind(this)).prop('href', 'javascript:');
+            $('#com-chilipeppr-widget-axes2-y .dropdown-menu a').eq(6).click("y", this.homeAxis.bind(this)).prop('href', 'javascript:');;
+            $('#com-chilipeppr-widget-axes2-z .dropdown-menu a').eq(6).click("z", this.homeAxis.bind(this)).prop('href', 'javascript:');;
+            $('#com-chilipeppr-widget-axes2-a .dropdown-menu a').eq(6).click("a", this.homeAxis.bind(this)).prop('href', 'javascript:');;
 
         },
         publishSend: function(gcode) {
@@ -1438,39 +1438,39 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
         },
         isAAxisShowing: false,
         showHideAxisA: function () {
-            var el = $('#com-chilipeppr-widget-xyz-a');
+            var el = $('#com-chilipeppr-widget-axes2-a');
             if (el.hasClass('hidden')) {
                 this.isAAxisShowing = true;
                 el.removeClass('hidden');
-                $('#com-chilipeppr-widget-xyz .showhideaaxis').addClass("active");
+                $('#com-chilipeppr-widget-axes2 .showhideaaxis').addClass("active");
             } else {
                 this.isAAxisShowing = false;
                 el.addClass('hidden');
-                $('#com-chilipeppr-widget-xyz .showhideaaxis').removeClass("active");
+                $('#com-chilipeppr-widget-axes2 .showhideaaxis').removeClass("active");
             }
             $(window).trigger('resize');
         },
         ismDROShowing: false,
         showHidemDRO: function () {
-            var el = $('#com-chilipeppr-widget-xyz-mx');
-            if ($('#com-chilipeppr-widget-xyz-mx').hasClass('hidden')) {
+            var el = $('#com-chilipeppr-widget-axes2-mx');
+            if ($('#com-chilipeppr-widget-axes2-mx').hasClass('hidden')) {
                 this.ismDROShowing = true;
-                $('#com-chilipeppr-widget-xyz-mx').removeClass('hidden');
-                $('#com-chilipeppr-widget-xyz-my').removeClass('hidden');
-                $('#com-chilipeppr-widget-xyz-mz').removeClass('hidden');
-                $('#com-chilipeppr-widget-xyz .showhidemDRO').addClass("active");
+                $('#com-chilipeppr-widget-axes2-mx').removeClass('hidden');
+                $('#com-chilipeppr-widget-axes2-my').removeClass('hidden');
+                $('#com-chilipeppr-widget-axes2-mz').removeClass('hidden');
+                $('#com-chilipeppr-widget-axes2 .showhidemDRO').addClass("active");
             } else {
                 this.ismDROShowing = false;
-                $('#com-chilipeppr-widget-xyz-mx').addClass('hidden');
-                $('#com-chilipeppr-widget-xyz-my').addClass('hidden');
-                $('#com-chilipeppr-widget-xyz-mz').addClass('hidden');
-                $('#com-chilipeppr-widget-xyz .showhidemDRO').removeClass("active");
+                $('#com-chilipeppr-widget-axes2-mx').addClass('hidden');
+                $('#com-chilipeppr-widget-axes2-my').addClass('hidden');
+                $('#com-chilipeppr-widget-axes2-mz').addClass('hidden');
+                $('#com-chilipeppr-widget-axes2 .showhidemDRO').removeClass("active");
             }
             $(window).trigger('resize');
         },
         btnSetup: function () {
             // setup planner indicator icon
-            $('#com-chilipeppr-widget-xyz div.plannerpause').popover({
+            $('#com-chilipeppr-widget-axes2 div.plannerpause').popover({
                 html: true,
                 delay: 200,
                 animation: true,
@@ -1480,82 +1480,82 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
             });
 
             // in / mm
-            $('#com-chilipeppr-widget-xyz .btnInMm').click(this.toggleInMm.bind(this));
+            $('#com-chilipeppr-widget-axes2 .btnInMm').click(this.toggleInMm.bind(this));
 
-            $('#com-chilipeppr-widget-xyz .showhidemDRO').popover();
-            $('#com-chilipeppr-widget-xyz .showhideaaxis').popover();
-            $('#com-chilipeppr-widget-xyz .btnInMm').popover();
-            $('#com-chilipeppr-widget-xyz .btnmachineDRO').popover();
+            $('#com-chilipeppr-widget-axes2 .showhidemDRO').popover();
+            $('#com-chilipeppr-widget-axes2 .showhideaaxis').popover();
+            $('#com-chilipeppr-widget-axes2 .btnInMm').popover();
+            $('#com-chilipeppr-widget-axes2 .btnmachineDRO').popover();
         },
         jogFocusIndicate: function () {
-            $('#com-chilipeppr-widget-xyz').addClass("panel-primary");
+            $('#com-chilipeppr-widget-axes2').addClass("panel-primary");
         },
         jogFocusUnindicate: function () {
-            $('#com-chilipeppr-widget-xyz').removeClass("panel-primary");
+            $('#com-chilipeppr-widget-axes2').removeClass("panel-primary");
         },
         isInCustomMenu: false,
         customMenuSetVal: function (itemNum) {
             console.log("setting custom val from itemNum:", itemNum);
             if (itemNum instanceof Object) itemNum = itemNum.data; // convert evt obj to just the data
             var cls = ".jogincrCustomInput" + itemNum;
-            var inputEl = $('#com-chilipeppr-widget-xyz-ftr ' + cls);
+            var inputEl = $('#com-chilipeppr-widget-axes2-ftr ' + cls);
             var val = parseFloat(inputEl.val());
             if (val != null) {
-                $('#com-chilipeppr-widget-xyz-ftr .jogincrCustomVal').text(val);
+                $('#com-chilipeppr-widget-axes2-ftr .jogincrCustomVal').text(val);
                 this.changeBaseVal({
                     data: {
                         newval: val,
                         cls: ".jogincrCustomBtn"
                     }
                 });
-            } else $('#com-chilipeppr-widget-xyz-ftr .jogincrCustomVal').text("-");
+            } else $('#com-chilipeppr-widget-axes2-ftr .jogincrCustomVal').text("-");
         },
         jogSetup: function () {
             // attach to focus and blur events
             // when focused, we'll jog
             var that = this;
-            $('#com-chilipeppr-widget-xyz-jog').popover();
-            $('#com-chilipeppr-widget-xyz-ftr .btn').popover();
+            $('#com-chilipeppr-widget-axes2-jog').popover();
+            $('#com-chilipeppr-widget-axes2-ftr .btn').popover();
 
 
             // setup button events
-            $('#com-chilipeppr-widget-xyz-ftr .jogx').click("X+", this.jogBtn.bind(this));
-            $('#com-chilipeppr-widget-xyz-ftr .jogy').click("Y+", this.jogBtn.bind(this));
-            $('#com-chilipeppr-widget-xyz-ftr .jogz').click("Z+", this.jogBtn.bind(this));
-            $('#com-chilipeppr-widget-xyz-ftr .jogxneg').click("X-", this.jogBtn.bind(this));
-            $('#com-chilipeppr-widget-xyz-ftr .jogyneg').click("Y-", this.jogBtn.bind(this));
-            $('#com-chilipeppr-widget-xyz-ftr .jogzneg').click("Z-", this.jogBtn.bind(this));
+            $('#com-chilipeppr-widget-axes2-ftr .jogx').click("X+", this.jogBtn.bind(this));
+            $('#com-chilipeppr-widget-axes2-ftr .jogy').click("Y+", this.jogBtn.bind(this));
+            $('#com-chilipeppr-widget-axes2-ftr .jogz').click("Z+", this.jogBtn.bind(this));
+            $('#com-chilipeppr-widget-axes2-ftr .jogxneg').click("X-", this.jogBtn.bind(this));
+            $('#com-chilipeppr-widget-axes2-ftr .jogyneg').click("Y-", this.jogBtn.bind(this));
+            $('#com-chilipeppr-widget-axes2-ftr .jogzneg').click("Z-", this.jogBtn.bind(this));
 
             //gotoZero
-            $('#com-chilipeppr-widget-xyz-ftr .joggotozerow').click("xyz", this.gotoZero.bind(this));
-            $('#com-chilipeppr-widget-xyz-ftr .jogzerooutw').click("xyz", this.zeroOutAxisG10.bind(this));
-            $('#com-chilipeppr-widget-xyz-ftr .joghomem').click("xyz", this.homeAxis.bind(this));
-            $('#com-chilipeppr-widget-xyz-ftr .joggotozerom').click("xyz", this.gotoZeroM.bind(this));
-            $('#com-chilipeppr-widget-xyz-ftr .jogzerooutm').click("xyz", this.zeroOutAxisG28.bind(this));
+            $('#com-chilipeppr-widget-axes2-ftr .joggotozerow').click("xyz", this.gotoZero.bind(this));
+            $('#com-chilipeppr-widget-axes2-ftr .jogzerooutw').click("xyz", this.zeroOutAxisG10.bind(this));
+            $('#com-chilipeppr-widget-axes2-ftr .joghomem').click("xyz", this.homeAxis.bind(this));
+            $('#com-chilipeppr-widget-axes2-ftr .joggotozerom').click("xyz", this.gotoZeroM.bind(this));
+            $('#com-chilipeppr-widget-axes2-ftr .jogzerooutm').click("xyz", this.zeroOutAxisG28.bind(this));
 
 
             // setup base value increment buttons
-            $('#com-chilipeppr-widget-xyz-ftr .jogincr1').click({
+            $('#com-chilipeppr-widget-axes2-ftr .jogincr1').click({
                 newval: 1.0,
                 cls: ".jogincr1"
             }, this.changeBaseVal.bind(this));
-            $('#com-chilipeppr-widget-xyz-ftr .jogincrpt1').click({
+            $('#com-chilipeppr-widget-axes2-ftr .jogincrpt1').click({
                 newval: 0.1,
                 cls: ".jogincrpt1"
             }, this.changeBaseVal.bind(this));
-            $('#com-chilipeppr-widget-xyz-ftr .jogincrpt01').click({
+            $('#com-chilipeppr-widget-axes2-ftr .jogincrpt01').click({
                 newval: 0.01,
                 cls: ".jogincrpt01"
             }, this.changeBaseVal.bind(this));
-            $('#com-chilipeppr-widget-xyz-ftr .jogincrpt001').click({
+            $('#com-chilipeppr-widget-axes2-ftr .jogincrpt001').click({
                 newval: 0.001,
                 cls: ".jogincrpt001"
             }, this.changeBaseVal.bind(this));
 
             // setup custom increment button
-            var custIncrBtn = $('#com-chilipeppr-widget-xyz-ftr .jogincrCustomBtn');
+            var custIncrBtn = $('#com-chilipeppr-widget-axes2-ftr .jogincrCustomBtn');
             custIncrBtn.click(function () {
-                var txt = $('#com-chilipeppr-widget-xyz-ftr .jogincrCustomVal').text();
+                var txt = $('#com-chilipeppr-widget-axes2-ftr .jogincrCustomVal').text();
                 if (txt != "-") {
                     var val = parseFloat(txt);
                     that.changeBaseVal({
@@ -1567,32 +1567,32 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
                 }
             });
 
-            var custDropUpBtn = $('#com-chilipeppr-widget-xyz-ftr .jogincrCustomDropUpBtn');
+            var custDropUpBtn = $('#com-chilipeppr-widget-axes2-ftr .jogincrCustomDropUpBtn');
             custDropUpBtn.on('click', function () {
                 console.log("drop up btn clicked");
                 that.isInCustomMenu = true;
-                //$('#com-chilipeppr-widget-xyz-ftr').blur();
+                //$('#com-chilipeppr-widget-axes2-ftr').blur();
             });
 
             // show/ hide.bs.dropdown
-            var custMenu = $('#com-chilipeppr-widget-xyz-ftr .jogincrCustomDropUpMenu').parent();
+            var custMenu = $('#com-chilipeppr-widget-axes2-ftr .jogincrCustomDropUpMenu').parent();
             custMenu.on('show.bs.dropdown', function () {
                 console.log("drop up custom increment menu shown");
                 that.isInCustomMenu = true;
-                $('#com-chilipeppr-widget-xyz-ftr').blur();
+                $('#com-chilipeppr-widget-axes2-ftr').blur();
             });
             custMenu.on('hidden.bs.dropdown', function () {
                 console.log("drop up custom increment menu hidden");
                 that.isInCustomMenu = false;
-                $('#com-chilipeppr-widget-xyz-ftr').blur();
+                $('#com-chilipeppr-widget-axes2-ftr').blur();
             });
 
-            var custInput = $('#com-chilipeppr-widget-xyz-ftr .jogincrCustomInput');
+            var custInput = $('#com-chilipeppr-widget-axes2-ftr .jogincrCustomInput');
             custInput.click(function (e) {
                 console.log("got click on jogincrCustomInput");
                 that.isInCustomMenu = true;
                 e.stopPropagation();
-                $('#com-chilipeppr-widget-xyz-ftr').blur();
+                $('#com-chilipeppr-widget-axes2-ftr').blur();
                 console.log("in custom menu mode");
             });
             custInput.keydown(function (evt) {
@@ -1615,16 +1615,16 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
             });
 
             // setup custom menu set buttons
-            $('#com-chilipeppr-widget-xyz-ftr .jogincrCustomSet1').click(1, this.customMenuSetVal.bind(this));
-            $('#com-chilipeppr-widget-xyz-ftr .jogincrCustomSet2').click(2, this.customMenuSetVal.bind(this));
-            $('#com-chilipeppr-widget-xyz-ftr .jogincrCustomSet3').click(3, this.customMenuSetVal.bind(this));
-            $('#com-chilipeppr-widget-xyz-ftr .jogincrCustomSet4').click(4, this.customMenuSetVal.bind(this));
+            $('#com-chilipeppr-widget-axes2-ftr .jogincrCustomSet1').click(1, this.customMenuSetVal.bind(this));
+            $('#com-chilipeppr-widget-axes2-ftr .jogincrCustomSet2').click(2, this.customMenuSetVal.bind(this));
+            $('#com-chilipeppr-widget-axes2-ftr .jogincrCustomSet3').click(3, this.customMenuSetVal.bind(this));
+            $('#com-chilipeppr-widget-axes2-ftr .jogincrCustomSet4').click(4, this.customMenuSetVal.bind(this));
 
             // setup jog btn
-            $('#com-chilipeppr-widget-xyz-jog').click(function () {
+            $('#com-chilipeppr-widget-axes2-jog').click(function () {
                 console.log("setting focus/blur to footer");
-                var elFtr = $('#com-chilipeppr-widget-xyz-ftr');
-                //if ($('#com-chilipeppr-widget-xyz').hasClass('panel-primary'))
+                var elFtr = $('#com-chilipeppr-widget-axes2-ftr');
+                //if ($('#com-chilipeppr-widget-axes2').hasClass('panel-primary'))
                 //    elFtr.blur();
                 //else
                 elFtr.focus();
@@ -1632,28 +1632,28 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
 
             var isjogging = false;
 
-            $('#com-chilipeppr-widget-xyz-ftr').focusin(function () {
+            $('#com-chilipeppr-widget-axes2-ftr').focusin(function () {
                 if (that.isInCustomMenu) {
                     console.log("got focusin for axes widget, but we appear to be showing the custom increment menu, so ignoring focus.");
                     return;
                 }
                 //console.log("jog area focus");
-                $('#com-chilipeppr-widget-xyz').addClass("panel-primary");
-                $('#com-chilipeppr-widget-xyz-ftr').addClass("panel-primary");
+                $('#com-chilipeppr-widget-axes2').addClass("panel-primary");
+                $('#com-chilipeppr-widget-axes2-ftr').addClass("panel-primary");
                 isjogging = true;
                 that.accelBaseValHilite({});
                 console.log("got focusin on axes widget ftr");
             });
-            $('#com-chilipeppr-widget-xyz-ftr').focusout(function () {
+            $('#com-chilipeppr-widget-axes2-ftr').focusout(function () {
 
                 //console.log("jog area blur");
-                $('#com-chilipeppr-widget-xyz').removeClass("panel-primary");
-                $('#com-chilipeppr-widget-xyz-ftr').removeClass("panel-primary");
+                $('#com-chilipeppr-widget-axes2').removeClass("panel-primary");
+                $('#com-chilipeppr-widget-axes2-ftr').removeClass("panel-primary");
                 isjogging = false;
                 that.accelBaseValHilite({});
                 console.log("got focusout on axes widget ftr");
             });
-            /*$('#com-chilipeppr-widget-xyz-ftr').keypress(function (evt) {
+            /*$('#com-chilipeppr-widget-axes2-ftr').keypress(function (evt) {
                 console.log("got keypress for jog. evt:", evt, evt.which);
             });*/
 
@@ -1661,7 +1661,7 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
             that.lastKeydownTime = 0;
 
 
-            $('#com-chilipeppr-widget-xyz-ftr').keydown(function (evt) {
+            $('#com-chilipeppr-widget-axes2-ftr').keydown(function (evt) {
 
                 if (that.isInCustomMenu) {
                     console.log("custom menu showing. not doing jog.");
@@ -1722,25 +1722,25 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
                 if (key == 38) {
                     // up arrow. Y+
                     direction = "Y+";
-                    $('#com-chilipeppr-widget-xyz-ftr .jogy').addClass("hilite");
+                    $('#com-chilipeppr-widget-axes2-ftr .jogy').addClass("hilite");
                 } else if (key == 40) {
                     // down arrow. Y-
                     direction = "Y-";
-                    $('#com-chilipeppr-widget-xyz-ftr .jogyneg').addClass("hilite");
+                    $('#com-chilipeppr-widget-axes2-ftr .jogyneg').addClass("hilite");
                 } else if (key == 37) {
                     direction = "X-";
-                    $('#com-chilipeppr-widget-xyz-ftr .jogxneg').addClass("hilite");
+                    $('#com-chilipeppr-widget-axes2-ftr .jogxneg').addClass("hilite");
                 } else if (key == 39) {
                     direction = "X+";
-                    $('#com-chilipeppr-widget-xyz-ftr .jogx').addClass("hilite");
+                    $('#com-chilipeppr-widget-axes2-ftr .jogx').addClass("hilite");
                 } else if (key == 33) {
                     // page up
                     direction = "Z+";
-                    $('#com-chilipeppr-widget-xyz-ftr .jogz').addClass("hilite");
+                    $('#com-chilipeppr-widget-axes2-ftr .jogz').addClass("hilite");
                 } else if (key == 34) {
                     // page down
                     direction = "Z-";
-                    $('#com-chilipeppr-widget-xyz-ftr .jogzneg').addClass("hilite");
+                    $('#com-chilipeppr-widget-axes2-ftr .jogzneg').addClass("hilite");
                 }
 
                 if (direction) {
@@ -1750,7 +1750,7 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
             });
 
             // when key is up, we're done jogging
-            $('#com-chilipeppr-widget-xyz-ftr').keyup(function (evt) {
+            $('#com-chilipeppr-widget-axes2-ftr').keyup(function (evt) {
 
                 if (that.isInCustomMenu) {
                     console.log("custom menu showing. not doing jog.");
@@ -1774,20 +1774,20 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
                 var key = evt.which;
                 if (key == 38) {
                     // up arrow. Y+
-                    $('#com-chilipeppr-widget-xyz-ftr .jogy').removeClass("hilite");
+                    $('#com-chilipeppr-widget-axes2-ftr .jogy').removeClass("hilite");
                 } else if (key == 40) {
                     // down arrow. Y-
-                    $('#com-chilipeppr-widget-xyz-ftr .jogyneg').removeClass("hilite");
+                    $('#com-chilipeppr-widget-axes2-ftr .jogyneg').removeClass("hilite");
                 } else if (key == 37) {
-                    $('#com-chilipeppr-widget-xyz-ftr .jogxneg').removeClass("hilite");
+                    $('#com-chilipeppr-widget-axes2-ftr .jogxneg').removeClass("hilite");
                 } else if (key == 39) {
-                    $('#com-chilipeppr-widget-xyz-ftr .jogx').removeClass("hilite");
+                    $('#com-chilipeppr-widget-axes2-ftr .jogx').removeClass("hilite");
                 } else if (key == 33) {
                     // page up
-                    $('#com-chilipeppr-widget-xyz-ftr .jogz').removeClass("hilite");
+                    $('#com-chilipeppr-widget-axes2-ftr .jogz').removeClass("hilite");
                 } else if (key == 34) {
                     // page down
-                    $('#com-chilipeppr-widget-xyz-ftr .jogzneg').removeClass("hilite");
+                    $('#com-chilipeppr-widget-axes2-ftr .jogzneg').removeClass("hilite");
                 }
 
                 that.lastKeydownTime = 0;
@@ -1851,20 +1851,20 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
             //console.log("accelval:", accelval);
             this.accelBaseval = accelval;
 
-            $('#com-chilipeppr-widget-xyz-ftr .jogincrements-horiz button').removeClass("hiliteblue");
+            $('#com-chilipeppr-widget-axes2-ftr .jogincrements-horiz button').removeClass("hiliteblue");
 
             if (isCustom) {
                 // just tweak the val in red <code> instead of hiliting button
-                $('#com-chilipeppr-widget-xyz-ftr .jogincrCustomBtn').addClass("hiliteblue");
+                $('#com-chilipeppr-widget-axes2-ftr .jogincrCustomBtn').addClass("hiliteblue");
                 this.customOrigVal = this.baseval;
-                $('#com-chilipeppr-widget-xyz-ftr .jogincrCustomVal').text(accelval);
+                $('#com-chilipeppr-widget-axes2-ftr .jogincrCustomVal').text(accelval);
             } else {
                 this.customOrigVal = null;
-                //$('#com-chilipeppr-widget-xyz-ftr .btnincrements button').removeClass("hiliteblue");
-                if (accelval == 1.0) $('#com-chilipeppr-widget-xyz-ftr .jogincr1').addClass("hiliteblue");
-                if (accelval == 0.1) $('#com-chilipeppr-widget-xyz-ftr .jogincrpt1').addClass("hiliteblue");
-                if (accelval == 0.01) $('#com-chilipeppr-widget-xyz-ftr .jogincrpt01').addClass("hiliteblue");
-                if (accelval == 0.001) $('#com-chilipeppr-widget-xyz-ftr .jogincrpt001').addClass("hiliteblue");
+                //$('#com-chilipeppr-widget-axes2-ftr .btnincrements button').removeClass("hiliteblue");
+                if (accelval == 1.0) $('#com-chilipeppr-widget-axes2-ftr .jogincr1').addClass("hiliteblue");
+                if (accelval == 0.1) $('#com-chilipeppr-widget-axes2-ftr .jogincrpt1').addClass("hiliteblue");
+                if (accelval == 0.01) $('#com-chilipeppr-widget-axes2-ftr .jogincrpt01').addClass("hiliteblue");
+                if (accelval == 0.001) $('#com-chilipeppr-widget-axes2-ftr .jogincrpt001').addClass("hiliteblue");
             }
         },
         accelBaseValUnhilite: function () {
@@ -1872,23 +1872,23 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
             if (this.customOrigVal != null) {
                 // the previous hilite was for custom
                 this.customOrigVal = null;
-                $('#com-chilipeppr-widget-xyz-ftr .jogincrCustomVal').text(this.baseval);
+                $('#com-chilipeppr-widget-axes2-ftr .jogincrCustomVal').text(this.baseval);
             }
             this.accelBaseval = this.baseval;
 
-            $('#com-chilipeppr-widget-xyz-ftr .jogincrements-horiz button').removeClass("hiliteblue");
-            //$('#com-chilipeppr-widget-xyz-ftr .btnincrements button').removeClass("hiliteblue");
+            $('#com-chilipeppr-widget-axes2-ftr .jogincrements-horiz button').removeClass("hiliteblue");
+            //$('#com-chilipeppr-widget-axes2-ftr .btnincrements button').removeClass("hiliteblue");
         },
         changeBaseVal: function (evt) {
             console.log("changeBaseVal. data:", evt.data, evt);
             this.baseval = evt.data.newval;
             this.accelBaseval = this.baseval;
             // reset all hilites
-            $('#com-chilipeppr-widget-xyz-ftr .jogincrements-horiz button').removeClass("hilite");
-            $('#com-chilipeppr-widget-xyz-ftr .jogincrements-horiz button').removeClass("hiliteblue");
-            //$('#com-chilipeppr-widget-xyz-ftr .btnincrements button').removeClass("hilite");
+            $('#com-chilipeppr-widget-axes2-ftr .jogincrements-horiz button').removeClass("hilite");
+            $('#com-chilipeppr-widget-axes2-ftr .jogincrements-horiz button').removeClass("hiliteblue");
+            //$('#com-chilipeppr-widget-axes2-ftr .btnincrements button').removeClass("hilite");
             // set new hilite
-            $('#com-chilipeppr-widget-xyz-ftr ' + evt.data.cls).addClass("hilite");
+            $('#com-chilipeppr-widget-axes2-ftr ' + evt.data.cls).addClass("hilite");
 
             // if this was set from a click, then save cookie
             if (evt.type == "click") {
@@ -1975,10 +1975,10 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
             if (!(evt == null)) localStorage.setItem("/" + this.id + "/body", "hidden");
         },
         forkSetup: function () {
-            //$('#com-chilipeppr-widget-xyz-tbar-fork').prop('href', this.fiddleurl);
-            //$('#com-chilipeppr-widget-xyz-tbar-standalone').prop('href', this.url);
-            //$('#com-chilipeppr-widget-xyz .fork-name').html(this.id);
-            $('#com-chilipeppr-widget-xyz .panel-title').popover({
+            //$('#com-chilipeppr-widget-axes2-tbar-fork').prop('href', this.fiddleurl);
+            //$('#com-chilipeppr-widget-axes2-tbar-standalone').prop('href', this.url);
+            //$('#com-chilipeppr-widget-axes2 .fork-name').html(this.id);
+            $('#com-chilipeppr-widget-axes2 .panel-title').popover({
                 title: this.name,
                 content: this.desc,
                 trigger: 'hover',
@@ -1993,7 +1993,7 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
             var that = this;
             chilipeppr.load("http://fiddle.jshell.net/chilipeppr/zMbL9/show/light/", function () {
                 require(['inline:com-chilipeppr-elem-pubsubviewer'], function (pubsubviewer) {
-                    pubsubviewer.attachTo($('#com-chilipeppr-widget-xyz .panel-heading .dropdown-menu'), that);
+                    pubsubviewer.attachTo($('#com-chilipeppr-widget-axes2 .panel-heading .dropdown-menu'), that);
                 });
             });
 
